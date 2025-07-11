@@ -95,9 +95,14 @@ android
 
 == 📚 Tópico: CameraX
 
-=== <a id="app1"></a>Subtópico: App1 - Captura com Preview
+Este projeto utiliza a API moderna *CameraX* do Android Jetpack para capturar imagens, com integração ao ciclo de vida, preview e armazenamento local.
 
-Demonstração do uso básico da API `CameraX` com preview ao vivo via `PreviewView` e captura de imagens com `ImageCapture`.
+[[app1]]
+=== App1: Captura com Preview
+
+Exemplo prático de captura de imagem usando `PreviewView` e `ImageCapture`.
+
+---
 
 [cols="1a", options="header"]
 |===
