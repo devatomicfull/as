@@ -140,6 +140,10 @@ No contexto do *CameraX*, um **caso de uso** é um tipo específico de tarefa qu
 
 | `ImageAnalysis`
 | Processamento em tempo real dos frames da câmera (ex: leitura de QR Code, uso com ML (Machine Learning), etc.)
+
+| Extensions     
+| HDR, modo retrato, noturno (se suportado)
+
 |===
 
 
@@ -207,17 +211,65 @@ TAGS utilizadas:
 - link:https://developer.android.com/training/permissions/requesting?hl=pt-br[Documentação Oficial - Solicitar permissões de execução]
 
 
-== 🛠️ Requisitos Técnicos
+== 🛠️ Requisitos Técnicos - Mínimos
 
-- SDK mínimo: API 21 (Lollipop)
-- SDK alvo: API 34 (Upside Down Cake)
-- Gradle Plugin: 8.0+
-- Permissões declaradas no `AndroidManifest.xml` : tag < uses-permissions />
+- SDK mínimo: **API 21 (Lollipop)**
+- Android Architecture Components: **v1.1.1 ou superior**
+- Gradle Plugin: **8.0+**
+- Permissões declaradas no `AndroidManifest.xml` via tag `<uses-permission />`
+
+=== 🔄 Ciclo de Vida (Lifecycle)
+
+Para atividades que envolvam ciclo de vida com CameraX, utilize as seguintes classes base:
+
+- link:https://developer.android.com/reference/androidx/fragment/app/FragmentActivity[📘 FragmentActivity - Documentação Oficial]
+- link:https://developer.android.com/reference/androidx/appcompat/app/AppCompatActivity[📘 AppCompatActivity - Documentação Oficial]
 
 == 📦 Gradle Scripts
 
+=== Dependências no `settings.gradle.kts` (nível do projeto `setttings`)
+
+Para utilizar a *API CameraX*, é necessário garantir que o projeto esteja configurado com os repositórios corretos para resolver as dependências.
+
+Essa configuração é feita no arquivo `settings.gradle.kts`, adicionando o repositório do Google e Maven Central.
+
+- Adiciona o repositório `google()` (obrigatório para CameraX)
+- Inclui também o `mavenCentral()` para garantir compatibilidade com outras bibliotecas
+
+[source,kotlin]
+----
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()        // Necessário para CameraX e bibliotecas do Jetpack
+        mavenCentral()  // Repositório adicional para outras dependências
+    }
+}
+----
+
+Adicione o código abaixo ao fim do bloco `android{ ... }`: 
+
+[source, kotlin]
+----
+android {
+ // No final
+    compileOptions {
+        // sourceCompatibility = JavaVersion.VERSION_1_8
+        // targetCompatibility = JavaVersion.VERSION_1_8
+
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+----
+
 === Dependências no `build.gradle.kts` (nível do módulo `:app`)
 
+Adicione o código a seguir ao arquivo build.gradle.kts de cada módulo para um app
 Abaixo estão as dependências necessárias para utilizar a API CameraX com suas funcionalidades principais.
 
 [source,kotlin]
@@ -240,9 +292,18 @@ dependencies {
     // ao ciclo de vida de uma Activity ou Fragment (LifecycleOwner).
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
 
+    // camera-video: (Opcional) Adiciona suporte para gravação de vídeos com CameraX.
+    // Habilita o caso de uso VideoCapture, ideal para capturar vídeos diretamente da câmera.
+    implementation("androidx.camera:camera-video:$cameraxVersion")
+
     // camera-view: Fornece o PreviewView, que é o componente visual para exibir o vídeo da câmera.
     // Também suporta gestos, zoom, foco por toque etc.
     implementation("androidx.camera:camera-view:$cameraxVersion")
+
+     // camera-mlkit-vision: (Opcional) Integração com ML Kit Vision
+     // Permite aplicar modelos de Machine Learning diretamente nos frames da câmera,
+     // como detecção de rostos, OCR, leitura de QR codes, etc.
+     implementation("androidx.camera:camera-mlkit-vision:$cameraxVersion")
 
     // camera-extensions: Habilita recursos específicos do fabricante,
     // como modo retrato, HDR, modo noturno, beauty mode etc. (se o dispositivo suportar).
@@ -250,24 +311,20 @@ dependencies {
 }
 ----
 
-=== Dependências no `settings.gradle.kts` (nível do projeto `setttings`)
+== ℹ️ Observação
 
-Para utilizar a *API CameraX*, é necessário garantir que o projeto esteja configurado com os repositórios corretos para resolver as dependências.
+A dependência `camera-mlkit-vision` **não inclui os modelos do ML Kit embutidos**.  
+Ela apenas cria o elo entre o *CameraX* e os modelos do *ML Kit Vision*.
 
-Essa configuração é feita no arquivo `settings.gradle.kts`, adicionando o repositório do Google e Maven Central.
+Para que o reconhecimento funcione (ex: rostos, textos, códigos), é necessário importar manualmente os módulos específicos desejados do ML Kit.
 
-- Adiciona o repositório `google()` (obrigatório para CameraX)
-- Inclui também o `mavenCentral()` para garantir compatibilidade com outras bibliotecas
+=== 📦 Bibliotecas necessárias (exemplos):
 
 [source,kotlin]
 ----
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()        // Necessário para CameraX e bibliotecas do Jetpack
-        mavenCentral()  // Repositório adicional para outras dependências
-    }
-}
+implementation("com.google.mlkit:barcode-scanning:17.0.2")       // Leitura de QR Codes e códigos de barras
+implementation("com.google.mlkit:text-recognition:16.0.0")       // Reconhecimento óptico de caracteres (OCR)
+implementation("com.google.mlkit:face-detection:16.1.5")         // Detecção de rostos
 ----
 
 Caso tenha dúvidas ou queira contribuir, envie uma mensagem ou abra um pull request.
