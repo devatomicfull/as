@@ -11,7 +11,7 @@ v1.0, Julho 2025
 
 [cols="1,1"]
 |===
-| *Tópico* | *Subtópico / Link*
+| *Tópico* | *Apps*
 
 | 1. CameraX
 | - <<app1, App1: Captura com Preview>>
@@ -21,29 +21,46 @@ v1.0, Julho 2025
 |===
 
 
-== API - CameraX : Utilização da API Jetpack para melhor desempenho e evitar Erros 
+=== 📖 Descrição Geral do Projeto
 
-📦 Pacotes Importantes
+Este repositório contém diversos aplicativos que utilizam diferentes APIs de câmera do Android: *CameraX*, *Camera1* e *Camera2*.  
+Inclui exemplos de uso atualizados, casos de APIs obsoletas, aplicação de novos recursos, boas práticas e arquitetura moderna.
 
-Os projetos que fazem o uso da camerax podem ter das seguintes bibliotecas e pacotes:
+== APIs de Câmera
 
-androidx
+=== API - CameraX
+Utilização da API *Jetpack CameraX* para melhor desempenho, integração com o ciclo de vida, e prevenção de erros comuns.
+
+=== API - Camera1
+[em desenvolvimento ou descrição pendente]
+
+=== API - Camera2
+[em desenvolvimento ou descrição pendente]
+
+== 📦 Pacotes Importantes Utilizados nos Apps
+
+Os projetos que utilizam a *CameraX* podem fazer uso dos seguintes pacotes:
+
+=== `androidx`
+
 - `camera.core`
 - `camera.lifecycle`
 - `camera.view`
 - `activity.result`
-- 'core.content`
+- `core.content`
 
-java
+=== `java`
+
 - `util.concurrent`
 
-android
+=== `android`
+
 - `os`
 - `content`
 - `Manifest`
 - `widget`
 
-Classes Usadas no projeto da camerax
+Classes Usadas nos projetos de testes do CameraX
 
 |===
 | Classe | Função
@@ -187,7 +204,13 @@ No contexto do *CameraX*, um **caso de uso** é um tipo específico de tarefa qu
 | HDR, modo retrato, noturno (se suportado)
 |===
 
+=== Usa o `CameraProvider`
 
+O `CameraProvider` fácil de usar, :
+
+- 
+- 
+- 
 
 == 🔐 Permissões no AndroidManifest.xml
 
