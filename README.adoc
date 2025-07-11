@@ -10,15 +10,23 @@ v1.0, Julho 2025
 == 📑 Sumário Geral
 
 [cols="1,1"]
-|===
-| *Tópico* | *Subtópico / Link*
 
-| 1. CameraX : Este projeto utiliza a API moderna *CameraX* do Android Jetpack para realizar captura de imagens
-| - <a id="app1"></a>App1: Captura com Preview
+== 1. CameraX
 
-| 2. Camera1
-| - <a id="app2"></a>App2: Captura -- >
-|===
+Este projeto utiliza a API moderna *CameraX* do Android Jetpack para realizar captura de imagens com suporte a ciclo de vida.
+
+[[app1]]
+=== App1: Captura com Preview
+
+Breve descrição do App1.
+
+== 2. Camera1
+
+[[app2]]
+=== App2: Captura
+
+Breve descrição do App2.
+
 
 == Tópico: API - CameraX
 
