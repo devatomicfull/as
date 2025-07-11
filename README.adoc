@@ -113,12 +113,34 @@ Exemplo prático de captura de imagem usando `PreviewView` e `ImageCapture`.
 
 Este aplicativo demonstra o uso básico da API CameraX para capturar fotos, exibindo a visualização da câmera diretamente na interface por meio do `PreviewView`. Também utiliza `ActivityResultLauncher` para solicitar permissões de forma moderna e segura.
 
-Usa o CameraController: Fornece a maioria das funcionalidades principais do Camerax em uma única classe.
-- Requer codigo de configuração
+=== Usa o CameraController
+
+Fornece a maioria das funcionalidades principais do *CameraX* em uma única classe:
+
+- Requer código de configuração
 - Processa automaticamente a inicialização da câmera
-- Gerenciamento de CASOS DE USO : 
-    O QUE SERIA "caso de uso (Use Case)" no Camerax?
-    No contexto do CameraX, um caso de uso é um tipo especifico de tarefa que você quer que a câmera faça, por exemplo:
+- Gerencia os *casos de uso* (Use Cases)
+
+==== O que é um "caso de uso (Use Case)" no CameraX?
+
+No contexto do *CameraX*, um **caso de uso** é um tipo específico de tarefa que você deseja que a câmera realize. Por exemplo:
+
+[cols="1,3", options="header"]
+|===
+| Caso de Uso (Classe) | Função
+
+| `Preview`
+| Mostra a imagem da câmera na tela (visualização em tempo real)
+
+| `ImageCapture`
+| Captura de imagens estáticas (fotos)
+
+| `VideoCapture`
+| Gravação de vídeos
+
+| `ImageAnalysis`
+| Processamento em tempo real dos frames da câmera (ex: leitura de QR Code, uso com ML (Machine Learning), etc.)
+|===
 
 
 === ⚙️ Componentes principais
