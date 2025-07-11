@@ -313,8 +313,7 @@ dependencies {
 
 == ℹ️ Observação
 
-- Para ter mais informações sobre como configurar seu app para atender a esses requisitos
-- link:https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br#declaring_dependencies[Declarar dependências]
+- Para ter mais informações sobre como configurar seu app para atender a esses requisitos link:https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br#declaring_dependencies[Declarar dependências]
 
 A dependência `camera-mlkit-vision` **não inclui os modelos do ML Kit embutidos**.  
 Ela apenas cria o elo entre o *CameraX* e os modelos do *ML Kit Vision*.
