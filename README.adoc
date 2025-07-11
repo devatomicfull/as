@@ -227,6 +227,9 @@ Para atividades que envolvam ciclo de vida com CameraX, utilize as seguintes cla
 
 == 📦 Gradle Scripts
 
+- Para ter mais informações sobre como configurar seu app para atender a esses requisitos
+- link: https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=pt-br#declaring_dependencies[Declarar dependências]
+
 === Dependências no `settings.gradle.kts` (nível do projeto `setttings`)
 
 Para utilizar a *API CameraX*, é necessário garantir que o projeto esteja configurado com os repositórios corretos para resolver as dependências.
