@@ -21,13 +21,11 @@ v1.0, Julho 2025
 |===
 
 
-== Tópico: API - CameraX
+== API - CameraX : Utilização da API Jetpack para melhor desempenho e evitar Erros 
 
-Suporte a ciclo de vida, preview e execução em segundo plano. A aplicação está preparada para trabalhar com permissões dinâmicas e escrita de arquivos locais. </a>
+📦 Pacotes Importantes
 
-== 📦 Pacotes Importantes
-
-O projeto faz uso das seguintes bibliotecas e pacotes:
+Os projetos que fazem o uso da camerax podem ter das seguintes bibliotecas e pacotes:
 
 androidx
 - `camera.core`
@@ -45,7 +43,7 @@ android
 - `Manifest`
 - `widget`
 
-== Classes Usadas
+Classes Usadas no projeto da camerax
 
 |===
 | Classe | Função
@@ -93,12 +91,12 @@ android
 | Permite escolher qual câmera utilizar (frontal, traseira).
 |===
 
-== 📚 Tópico: CameraX
-
-Este projeto utiliza a API moderna *CameraX* do Android Jetpack para capturar imagens, com integração ao ciclo de vida, preview e armazenamento local.
+== 📚 Apps que usam CameraX
 
 [[app1]]
 === App1: Captura com Preview
+
+Este projeto utiliza a API moderna *CameraX* do Android Jetpack para capturar imagens, com integração ao ciclo de vida, preview e armazenamento local do app.
 
 Exemplo prático de captura de imagem usando `PreviewView` e `ImageCapture`.
 
@@ -114,6 +112,14 @@ Exemplo prático de captura de imagem usando `PreviewView` e `ImageCapture`.
 == 📖 Descrição Geral do Projeto
 
 Este aplicativo demonstra o uso básico da API CameraX para capturar fotos, exibindo a visualização da câmera diretamente na interface por meio do `PreviewView`. Também utiliza `ActivityResultLauncher` para solicitar permissões de forma moderna e segura.
+
+Usa o CameraController: Fornece a maioria das funcionalidades principais do Camerax em uma única classe.
+- Requer codigo de configuração
+- Processa automaticamente a inicialização da câmera
+- Gerenciamento de CASOS DE USO : 
+    O QUE SERIA "caso de uso (Use Case)" no Camerax?
+    No contexto do CameraX, um caso de uso é um tipo especifico de tarefa que você quer que a câmera faça, por exemplo:
+
 
 === ⚙️ Componentes principais
 
