@@ -113,39 +113,6 @@ Exemplo prático de captura de imagem usando `PreviewView` e `ImageCapture`.
 
 Este aplicativo demonstra o uso básico da API CameraX para capturar fotos, exibindo a visualização da câmera diretamente na interface por meio do `PreviewView`. Também utiliza `ActivityResultLauncher` para solicitar permissões de forma moderna e segura.
 
-=== Usa o CameraController
-
-Fornece a maioria das funcionalidades principais do *CameraX* em uma única classe:
-
-- Requer código de configuração
-- Processa automaticamente a inicialização da câmera
-- Gerencia os *casos de uso* (Use Cases)
-
-==== O que é um "caso de uso (Use Case)" no CameraX?
-
-No contexto do *CameraX*, um **caso de uso** é um tipo específico de tarefa que você deseja que a câmera realize. Por exemplo:
-
-[cols="1,3", options="header"]
-|===
-| Caso de Uso (Classe) | Função
-
-| `Preview`
-| Mostra a imagem da câmera na tela (visualização em tempo real)
-
-| `ImageCapture`
-| Captura de imagens estáticas (fotos)
-
-| `VideoCapture`
-| Gravação de vídeos
-
-| `ImageAnalysis`
-| Processamento em tempo real dos frames da câmera (ex: leitura de QR Code, uso com ML (Machine Learning), etc.)
-
-| Extensions     
-| HDR, modo retrato, noturno (se suportado)
-
-|===
-
 
 === ⚙️ Componentes principais
 
@@ -180,6 +147,47 @@ Para evitar vazamentos de memória (memory leaks), o método `cameraHelper.encer
 
 === Regra 5 - Interface responsiva
 As interações com a UI após a captura (exibição de `Toast`, etc.) devem sempre ser feitas com `runOnUiThread()` para manter a estabilidade da interface.
+
+=== Arquitetura do CameraX
+
+== Estrutura
+
+== Modelo de API
+
+
+=== Usa o `CameraController`
+
+O `CameraController` fornece a maioria das funcionalidades principais do *CameraX* em uma única classe:
+
+- Requer código de configuração
+- Processa automaticamente a inicialização da câmera
+- Gerencia os *casos de uso* (Use Cases)
+
+==== O que é um "caso de uso" (*Use Case*) no CameraX?
+
+No contexto do *CameraX*, um **caso de uso** é um tipo específico de tarefa que você deseja que a câmera realize. Por exemplo:
+
+[cols="1,3", options="header"]
+|===
+| Caso de Uso (Classe) | Função
+
+| `Preview`
+| Mostra a imagem da câmera na tela (visualização em tempo real)
+
+| `ImageCapture`
+| Captura de imagens estáticas (fotos)
+
+| `VideoCapture`
+| Gravação de vídeos
+
+| `ImageAnalysis`
+| Processamento em tempo real dos frames da câmera (ex: leitura de QR Code, uso com ML (Machine Learning), etc.)
+
+| `Extensions`     
+| HDR, modo retrato, noturno (se suportado)
+|===
+
+
 
 == 🔐 Permissões no AndroidManifest.xml
 
